@@ -56,15 +56,18 @@ median(DailySteps$TotalStep)
 GroupByInterval <- group_by(activity, interval)
 AvgSteps <- summarise(GroupByInterval, AvgSteps = mean(steps, na.rm = T))
 
+maxInterval <- AvgSteps[ AvgSteps$AvgSteps == max(AvgSteps$AvgSteps),1]
+
 plot(AvgSteps$interval, AvgSteps$AvgSteps, type ="l"
      , main = "Average number of steps of 5-min Interval"
      , xlab = "interval", ylab = 'Average steps')
+abline(v = maxInterval, col = "red", lwd = 1)
 ```
 ![](https://github.com/hanky74/RepData_PeerAssessment1/blob/master/figure/Rplot02.png)
 
 2.Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 ```{r}
-AvgSteps[ AvgSteps$AvgSteps == max(AvgSteps$AvgSteps),1]
+maxInterval
 ##835
 ```
 
