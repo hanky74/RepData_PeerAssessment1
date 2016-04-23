@@ -77,7 +77,7 @@ sum(is.na(activity$steps))
 ```
 
 2.Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
-I choose mean value for that 5-minute interval.
+
 
 3.Create a new dataset that is equal to the original dataset but with the missing data filled in.
 ```{r}
@@ -98,6 +98,13 @@ activity2 <- rbind(WithNA, WithoutNA)
 ```{r}
 GroupByDate2 <- group_by(activity2, date)
 DailySteps2 <- summarise(GroupByDate2, TotalStep = sum(steps, na.rm = T))
+
+hist(DailySteps2$TotalStep, main = "Total Steps after imputing missing data"
+     , xlab = "Total Steps")
+
+```
+![](https://github.com/hanky74/RepData_PeerAssessment1/blob/master/Rplot04.png)
+```{r}
 
 mean(DailySteps$TotalStep)
 ##9354.23
