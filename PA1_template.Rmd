@@ -16,6 +16,7 @@ library(ggplot2)
 
 2.Loading dataset from csv file
 ```{r}
+setwd("https://github.com/hanky74/RepData_PeerAssessment1")
 activity <- read.csv("activity.csv")
 head(activity)
 ```
